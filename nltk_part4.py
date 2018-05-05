@@ -9,12 +9,20 @@ from nltk.tokenize import word_tokenize
 
 ## loading a existing file from nltk using state_union
 
-#print (state_union.raw("2005-GWBush.txt"))
+#print (state_union.raw("2005-GWBush.txt"))\
+# to train a new set provide a new training file for training set
+
 
 train_text =  state_union.raw("2005-GWBush.txt")
 sample_text = state_union.raw("2006-GWBush.txt")
 
 ## training the Punkt tokenizer 
+## it is already pretrained in this case 
+## without using train and PunktSentenceTokenizer and direclty giving sent_tokenizer 
+## will give the same result in this case as sent_tokenizer is pretrained
+
+
+
 training =  PunktSentenceTokenizer(train_text)
 
 ## Punkt Sentence Tokenizer  , is an abstract class for default sentence tokenizer i.e sent_tokenize 
@@ -24,6 +32,10 @@ training =  PunktSentenceTokenizer(train_text)
 ## to build a model for abbrev. words , collocations , and words that start sentences which need
 ## to be trained with large amount of data before using 
 
+tokenized2 = sent_tokenize(sample_text)
+for line in tokenized2[:2]:
+	words =  word_tokenize(line)
+	print (nltk.pos_tag(words))
 
 ##  tokenizing the data using tokenize 
 tokenized  =  training.tokenize(sample_text)
@@ -38,7 +50,7 @@ tokenized  =  training.tokenize(sample_text)
 
 def process_content():
 	try :
-		for line in tokenized[:5]:
+		for line in tokenized[:2]:
 			# using word_token for each line
 			words =  word_tokenize(line)
 			tagged = nltk.pos_tag(words)
