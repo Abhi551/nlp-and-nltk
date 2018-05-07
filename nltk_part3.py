@@ -4,9 +4,14 @@
 
 ## we use here stemming algorithm named  PorterStemmer
 
+## Lemmatizing Words Using WordNet
+## lemmatizing is similar to stemming but lemmatizing gives better real words 
+
 from nltk.tokenize import word_tokenize 
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
 ps = PorterStemmer()
 
 examples = ["do" , "doing" , "done" , "hatching" , "hatched" , "catchy" , "catched" , "catching" ]
@@ -33,3 +38,10 @@ print "\ntoken words from the sentence \n",token_words
 print "\nremoved words from the sentence \n" , final_words
 print "\n stemmed words from tokens \n " , stemmed_token
 print "\n stemmed words from final words \n " , stemmed_final
+
+## using WordNetLemmatizer
+## lemmatizing doesn't magically determine POS tag into account before stemming 
+lemmatizer = WordNetLemmatizer()
+print (lemmatizer.lemmatize("playing" , "v"))
+print (lemmatizer.lemmatize("doing" , "v"))
+print (lemmatizer.lemmatize("catched" , "v"))
