@@ -40,8 +40,30 @@ print "\n stemmed words from tokens \n " , stemmed_token
 print "\n stemmed words from final words \n " , stemmed_final
 
 ## using WordNetLemmatizer
+## by default WordNetLemmatizer() uses pos tag as noun , so every time we pass a different type of word such as 
+## verb , adjective we need to pass pos tag accordingly
 ## lemmatizing doesn't magically determine POS tag into account before stemming 
 lemmatizer = WordNetLemmatizer()
 print (lemmatizer.lemmatize("playing" , "v"))
 print (lemmatizer.lemmatize("doing" , "v"))
 print (lemmatizer.lemmatize("catched" , "v"))
+
+
+## for example
+print ("\n\nSome better examples for word lemmatizer ")
+## for verbs we have 
+print ("without using pos tag")
+print (lemmatizer.lemmatize("playing" ))
+print ("pos tag is given as 'v' ")
+print (lemmatizer.lemmatize("playing" , "v"))
+
+## for adjectives
+print ("without using pos tag")
+print (lemmatizer.lemmatize("better"))
+print ("pos tag is given as 'a' for adjectives ")
+print (lemmatizer.lemmatize("better" , "a"))
+
+## for nouns , by default 
+
+print ("cacti becomes %s"%(lemmatizer.lemmatize("cacti")))
+print ("geese becomes %s"%(lemmatizer.lemmatize("geese")))
