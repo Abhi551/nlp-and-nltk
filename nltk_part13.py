@@ -123,7 +123,8 @@ testing_data= all_features[1900:]
 classifier = nltk.NaiveBayesClassifier.train(training_data)
 
 ## now check the accuracy of our model
-
+## our accuracy might change due to shuffling of data every time 
+## so we get different files in training and test data
 print("Classifier accuracy percent on training_data  is :  " , (nltk.classify.accuracy(classifier, training_data))*100)
 print("Classifier accuracy percent on testing_data is :  "  , (nltk.classify.accuracy(classifier, testing_data))*100)
 
