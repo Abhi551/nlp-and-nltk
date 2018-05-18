@@ -83,8 +83,12 @@ for files in docs :
 
 #print (len(all_features))
 
+## positive dataset
 training_data = all_features[:1900]
 testing_data  = all_features[1900:]
+## negative dataset
+training_data = all_features[:100]
+testing_data  = all_features[100:]
 
 
 ## training the classifier model
@@ -186,7 +190,7 @@ class VoteClassifier(ClassifierI):
 votes = VoteClassifier(classifier , MNB_clf , BNB_clf , LR_clf , SGDC_clf , SVC_clf , linearSVC_clf , NuSVC_clf )
 
 ## we are providing first 10 files present in the training set to be evaluated whether it is pos or neg
-for i in range(100):
+for i in range(10):
 	print ("classification  =  %s and confidence = %s " %(votes.classify(testing_data[i][0]) , votes.conf(testing_data[i][0])))
 
 ## accuracy using the combined algorithms still need to be calculated 
