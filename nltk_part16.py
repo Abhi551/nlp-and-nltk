@@ -1,6 +1,6 @@
-## train a new dataset for sentiment analysis
-## short positive and negative data of 5300 each is given 
+## In this file we will load each classifier that we have saved during previous program
 
+## train a new dataset for sentiment analysis short positive and negative data of 5300 each is given 
 ## data should be in specific manner as (line , u'pos')
 
 import nltk 
@@ -137,9 +137,17 @@ class VoteClass(ClassifierI):
 
 
 ## training the classifier model
-classifier = nltk.NaiveBayesClassifier.train(training_data)
+#classifier = nltk.NaiveBayesClassifier.train(training_data)
+
+## we have already saved the NaiveBayesClassifier so we just need to reload it
+classifier_f = open('NaiveBayesClassifier.pickle' , 'rb')
+classifier = pickle.load(classifier_f)
 print("Classifier accuracy percent on training_data : ",(nltk.classify.accuracy(classifier, training_data))*100)
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(classifier, testing_data))*100)
+classifier_f.close()
+
+## we have to load the files only for every classifier
+## but first trained data of this type only should be used
 
 MNB_clf =  SklearnClassifier(MultinomialNB())
 MNB_clf.train(training_data)
