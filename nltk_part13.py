@@ -1,10 +1,12 @@
 ## applying Naive Bayes Algorithm to train and test on movie reviews data
 
 import nltk
+import random 
+import pickle
+
 from nltk.corpus import movie_reviews
 from nltk import NaiveBayesClassifier 
 from nltk.corpus import stopwords
-import random 
 
 ## taking fileid and category in docs
 docs = []
@@ -185,3 +187,17 @@ print("Classifier accuracy percent:",(nltk.classify.accuracy(classifier, trainin
 print ("\n")
 print ("Most occuring words and thier category is \n\n")
 print (classifier.show_most_informative_features(15))
+
+
+## saving the classifier using the concept of pickling
+## this way we have saved the classifier in NaiveBayesClassifier 
+save_classifier =  open('NaiveBayesClassifier.pickle' , 'wb')
+pickle.dump(classifier , save_classifier)
+save_classifier.close()
+
+print ("\n\n")
+print ("We have reloaded the classifier here \n")
+## load the classifier 
+classifier_f =open('NaiveBayesClassifier.pickle' , 'rb')
+classifier = pickle.load(classifier_f)
+classifier_f.close()
