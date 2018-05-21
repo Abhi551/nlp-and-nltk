@@ -1,5 +1,5 @@
 ## using different learning algorithms from scikit learn on same data and combining them for stable result
-
+## and saving the each of the classifier in a pickle file
 ## 1. SklearnClassifier , 
 ## 2. MultinomialNB , 
 ## 3. BernoulliNB , 
@@ -10,6 +10,7 @@
 
 import random 
 import nltk 
+import pickle
 from nltk.corpus import movie_reviews , stopwords
 from nltk import NaiveBayesClassifier
 from nltk import classify
@@ -86,16 +87,23 @@ for files in docs :
 ## positive dataset
 training_data = all_features[:1900]
 testing_data  = all_features[1900:]
+
 ## negative dataset
-training_data = all_features[:100]
-testing_data  = all_features[100:]
+training_data_neg = all_features[:100]
+testing_data_neg  = all_features[100:]
+
 
 
 ## training the classifier model
-classifier = nltk.NaiveBayesClassifier.train(training_data)
+'classifier = nltk.NaiveBayesClassifier.train(training_data)'
+## we have already saved NaiveBayesClassifier in pickle file
+## so we will just reload the file
+
+classifier_f = open('NaiveBayesClassifier.pickle' , 'rb')
+classifier = pickle.load(classifier_f)
 print("Classifier accuracy percent on training_data : ",(nltk.classify.accuracy(classifier, training_data))*100)
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(classifier, testing_data))*100)
-
+classifier_f.close()
 
 ## how to use algorithms from scikit learn into nltk
 ## In nltk to use the scikit learn algorithms import SklearnClassifier 
@@ -111,12 +119,24 @@ print ("\n\n")
 print ("MNB Classifier ")
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(MNB_clf , testing_data))*100)
 
+## save MNB_clf
+
+save_clf = open('MNB_clf.pickle' , 'wb')
+pickle.dump(MNB_clf , save_clf)
+save_clf.close()
 
 BNB_clf = SklearnClassifier(BernoulliNB())
 BNB_clf.train(training_data)
 print ("\n\n")
 print ("BNB Classifier")
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(BNB_clf , testing_data))*100)
+
+
+## save BNB_clf 
+
+save_clf =  open('BNB_clf.pickle' , 'wb')
+pickle.dump(BNB_clf , save_clf)
+save_clf.close()
 
 #for value in [1,10,15,50,335]:
 LR_clf = SklearnClassifier(LogisticRegression())
@@ -125,11 +145,24 @@ print ("\n\n")
 print ("LogisticRegression")
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(LR_clf, testing_data))*100)
 
+## save the LR_clf
+
+save_clf =  open('LR_clf.pickle' , 'wb')
+pickle.dump(LR_clf , save_clf)
+save_clf.close()
+
+
 SGDC_clf =  SklearnClassifier(SGDClassifier())
 SGDC_clf.train(training_data)
 print ("\n\n")
 print ("SGDC classifier")
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(SGDC_clf , testing_data))*100)
+
+## save the classifier
+
+save_clf =  open('SGDC_clf.pickle' , 'wb')
+pickle.dump(SGDC_clf , save_clf)
+save_clf.close()
 
 	
 SVC_clf = SklearnClassifier(SVC(kernel = "linear"))
@@ -138,6 +171,13 @@ print ("\n\n")
 print ("SV Classifier")
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(SVC_clf, testing_data))*100)
 
+## save the classifier
+
+save_clf = open('SVC_clf.pickle' , 'wb')
+pickle.dump(SVC_clf , save_clf)
+save_clf.close()
+
+
 #for c in [.0001 , 10  ] :
 linearSVC_clf = SklearnClassifier(LinearSVC (C = .1))
 linearSVC_clf.train(training_data)
@@ -145,14 +185,26 @@ print ("\n\n")
 print ("Linear SVC classifier")
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(linearSVC_clf, testing_data))*100)
 
+## save the classifier
+save_clf =  open('linearSVC_clf.pickle' , 'wb')
+pickle.dump(linearSVC_clf , save_clf)
+save_clf.close()
+
 
 NuSVC_clf = SklearnClassifier(NuSVC())
 NuSVC_clf.train(training_data)
 print ("\n\n")
 print ("Nu SVC classifier")
 print("Classifier accuracy percent on testing_data  : ",(nltk.classify.accuracy(NuSVC_clf, testing_data))*100)
+
+## save the classifier
+save_clf = open('NuSVC_clf.pickle' , 'wb')
+pickle.dump(NuSVC_clf , save_clf)
+save_clf.close()
+
 ## combining multiple algorithms 
  
+
 from nltk.classify import ClassifierI
 from statistics import mode 
 
