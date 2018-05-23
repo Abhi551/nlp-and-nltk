@@ -10,10 +10,10 @@ from datetime import datetime , date , time , timedelta
 from collections import Counter 
 from bs4 import BeautifulSoup as soup 
 
-consumer_key =  "5Hj3MKbBhpCvhIdROr2iO4toO"
-consumer_secret = "OzEsGaNfB2ufv05gbuaJi3GFIQtTJmNJmg7JiJ6ivQnHsxgote"
-access_token = "959777813132988416-5sBOHtOHKHMqYlGv3OcprOGazLSpH01"
-access_token_secret = "xkswcmJAqADzOaUJ1k9syvTtD6byMNrqwLnHsqqC00XPV"
+consumer_key =  "XXXXXXXXXXXXXXXX"
+consumer_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+access_token = "XXXXXXXXXXXXXXXXXXXXXXX"
+access_token_secret = "XXXXXXXXXXXXXXXXXXXXXXX"
 
 ## attempt authentication 
 class Twitter():
