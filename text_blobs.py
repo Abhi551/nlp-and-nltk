@@ -23,7 +23,7 @@ text = TextBlob(text)
 tags = text.tags
 print ("print all the tags ")
 print (tags)
-'''
+
 ## this will provide noun phrases only from the text
 print ("\nonly noun phrases ")
 print (text.noun_phrases)
@@ -33,7 +33,7 @@ print (text.noun_phrases)
 ## polarity gives score in [-1.0 , 1.0]
 ## subjectivity gives between [0 , 1.0] , 0 means very objective and 1 is very subjective 
 print (text.sentiment)
-'''
+
 ## tokenization 
 ## equivalent to nltk.word_tokenize 
 print ("\n tokenization by words")
