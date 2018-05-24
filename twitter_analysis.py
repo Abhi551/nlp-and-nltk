@@ -10,10 +10,10 @@ from datetime import datetime , date , time , timedelta
 from collections import Counter 
 from bs4 import BeautifulSoup as soup 
 
-consumer_key =  "XXXXXXXXXXXXXXXX"
-consumer_secret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-access_token = "XXXXXXXXXXXXXXXXXXXXXXX"
-access_token_secret = "XXXXXXXXXXXXXXXXXXXXXXX"
+consumer_key =  "XXXXXXX"
+consumer_secret = "XXXXXXXXXX"
+access_token = "XXXXXXXXX"
+access_token_secret = "XXXXXXXX"
 
 ## attempt authentication 
 class Twitter():
@@ -115,6 +115,8 @@ def main ():
 	tweets  = t.get_tweets(query ,count)
 	#print (tweets)
 	pos, neg , nuetral = t.sentiment_tweets(tweets)
+
+	#print (pos , neg , nuetral)
 
 	print ("percent of Positive tweets on %s %%" %(query))
 	print (pos/float(count))
