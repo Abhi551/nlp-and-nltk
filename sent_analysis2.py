@@ -10,7 +10,13 @@ reviews  = [
 			"The place was being renovated when I visited so the seating was limited.",
 			"Loved the ambience, loved the food" , "The food is delicious but not over the top." ,
 			"Service - Little slow, probably because too many people." , "The place is not easy to locate",
-			"Mushroom fried rice was tasty"]
+			"Mushroom fried rice was tasty",
+			"I am not happy but very sad " ,
+			"I am devasted by his cruelty",
+			"I am extremly very delighted by his help",
+			"I am so much happy that I am going out to have fun and dance with joy and have fun everyday ",			"I am extremly sorry",
+			"I am very happy",
+			"I am very very happy"]
 
 analyser =  SentimentIntensityAnalyzer()
 
@@ -18,3 +24,15 @@ for review in reviews:
 	print (review)
 	result = (analyser.polarity_scores(review))
 	print ("negative score = %s , positive score = %s , nuetral score = %s , compound score = %s") %(result['neg'] , result['pos'] , result['neu'] , result['compound'])
+	print ("\n")
+
+check = ["wow ! happy delighted amazing loved beloved embrace admire joyful merrily smile laughter alive beautiful and charming celebrate ",
+		"Dreadful alas! extremly sad sinister rotten reject revenge rude sick evil cruelty broken cry dead depressed"
+		]
+
+print ("just to check how positive words change the compound score\n")
+for review in check:
+	print ("sentence is :- \n%s"%(review))
+	result = analyser.polarity_scores(review)
+	print ("negative score = %s , positive score = %s , nuetral score = %s , compound score = %s") %(result['neg'] , result['pos'] , result['neu'] , result['compound'])
+	print ("\n")
