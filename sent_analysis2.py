@@ -1,5 +1,6 @@
 import nltk 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from textblob import TextBlob
 ## nltk comes with inbuilt sentiment analyser module that classify
 ## text under positive , negative and nuetral polarity of sentiments
 
@@ -36,3 +37,12 @@ for review in check:
 	result = analyser.polarity_scores(review)
 	print ("negative score = %s , positive score = %s , nuetral score = %s , compound score = %s") %(result['neg'] , result['pos'] , result['neu'] , result['compound'])
 	print ("\n")
+x = 1;
+while (x == 1):
+	word = raw_input("Enter the word = ")
+	word = TextBlob(word.lower())
+	word = word.correct()
+	word =str(word)
+	print ("The correct word is = %s" %(word))
+	print (analyser.polarity_scores(word))
+	x = input("x = ")
