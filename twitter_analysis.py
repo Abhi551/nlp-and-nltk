@@ -1,3 +1,10 @@
+## textblob.sentiment gives a tuple polarity and subjectivity 
+## polarity is between [-1 , 1 ] , 
+## subjectivity is between [0 , 1]
+## more subjectivity refers to statment being more personal opinion , emotion or judgement 
+## while objectivity refers to more of factual statement
+
+
 import tweepy 
 import sys
 import re
