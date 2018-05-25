@@ -32,7 +32,8 @@ custom_tokenizer = PunktSentenceTokenizer(train_text)
 ## custom_tokenizer gives output 'similar'  to sent_tokenize 
 
 tokenized = custom_tokenizer.tokenize(sample_text)
-
+sample_text = "Google, headquartered in Mountain View, unveiled the new Android phone at the Consumer Electronic Show.  Sundar Pichai said in his keynote that users love their new Android phones."
+tokenized = custom_tokenizer.tokenize(sample_text)
 ## create a function for finding named entities in our tokenized data
 
 def find_ent():
@@ -55,4 +56,4 @@ def find_ent():
 	except Exception as e:
 		print (e)
 
-find_ent()
+#find_ent()
